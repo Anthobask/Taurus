@@ -1,0 +1,146 @@
+html {
+    background-color : #bbb;
+}
+
+body {
+    margin-left : 5%;
+    margin-right : 5%;
+    margin-top : 0px; 
+    background-color : #ddd;
+
+}
+
+#header, #menu, #corps, #footer {
+    border-top : none;
+    padding-top: 10px;
+}
+
+/***** HEADER ****** 
+ - Bandeau à gauche, composé du logo
+ - Zone d'identification dans un cadre, collé à droite.
+*/
+#header {
+    height : 200px;     
+    background-color :#f0ead8;
+    border-bottom : 1px solid black;
+}
+
+#header .logo {    
+    width : 380px;
+    height : 100px;
+    color : #953b39;
+    margin-top : 30px;
+}
+#header .zone_id {    
+    color : #f0ead8;
+    width : 223px;
+    float:right;
+    background-color: #802420;
+    padding:10px;
+    margin-right : 15px;    
+    border : 1px solid grey;
+    margin-bottom : 5px;
+}
+#header .zone_id legend {    
+    color : #f0ead8;
+}
+#header .zone_id a { 
+    background-color : #b94a48;
+    margin-left : 5px;
+    color : #f0ead8;   
+    border : 1px solid white;
+    padding : 5px;
+}
+
+#header .zone_id a:hover {    
+    margin-left : 5px;
+    color : white;
+    border : 1px solid white;
+}
+
+/***** Menu ****** 
+ - en ligne
+ - avec un semblant d'onglet
+*/
+#menu li {
+    display : inline;
+    /* : 0 0.5em;  Pour espacer les boutons entre eux */
+    border-left : 1px solid black;
+    border-top : 1px solid black;
+    border-right : 1px solid black;
+
+    margin-left : -5px;
+    padding-left : 5px;
+    padding-right : 15px;
+    padding-bottom: 12px;    
+}
+#menu li a {
+
+}
+
+#menu {
+    list-style-type : none;    
+    clear:both;
+    background: #faf2cc;
+    border-bottom : 1px solid black;
+}
+
+
+/***** Corps ****** 
+ - Décalage de quelque pixel à gauche
+ - avec un fond très clair en harmonie avec le reste
+*/
+
+#corps {
+    background-color : #ddd;
+    padding : 10px;   
+    margin-right : 10px;   
+
+}
+
+#footer { 
+    margin-top : 0px; 
+    position : fixed;
+    width : 90%; /* 100%-2*[margin du body] */
+    height : 30px;
+    bottom: 0%;
+    border-top : 1px solid black;
+    color :#953b39;
+    text-align: center;
+    font : bold;
+    background-color : #faf2cc;
+}
+
+
+/************ Autres page **************/
+
+
+/***** index.php *****/
+.cadre_promo {
+    background-color :#faf2cc;
+    padding : 5px;
+    text-align : center;
+}
+.souscadre_promo1, .souscadre_promo2, .souscadre_promo3  {
+    background-color: #46a546;
+    height : 125px;
+
+}
+.cadre_service, .cadre_garentie {
+    margin-top : 10px;
+    border : solid black 1px; 
+    background-color :#faf2cc;
+    padding : 5px;
+
+}
+
+
+/******* inscription.php ******/
+#form_subscribe {
+    width : 700px;
+    background-color : #ffe;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: -50px;
+}

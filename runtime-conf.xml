@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <log>
+    <type>file</type>
+    <name>/librairie/logs</name>
+    <ident>propel-taurus</ident>
+    <level>7</level>
+  </log>
+  <propel>
+    <datasources default="taurus">
+      <datasource id="taurus">
+        <adapter>mysql</adapter>
+        <connection>
+          <dsn>mysql:host=localhost;dbname=taurus</dsn>
+          <user>root</user>
+          <password></password>
+        </connection>
+      </datasource>
+    </datasources>
+  </propel>
+</config>

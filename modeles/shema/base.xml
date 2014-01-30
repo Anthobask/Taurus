@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="taurus" defaultIdMethod="native">
+   <!-- Liste des tables -->
+    <table name="users" phpName="user">
+        <!-- colonnes -->
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="nom" type="varchar" size="255" required="true" />
+        <column name="prenom" type="varchar" size="255" required="true" />
+        <column name="login" type="varchar" size="255" required="true" />
+        <column name="password" type="varchar" size="255" required="true" />
+        <column name="email" type="varchar" size="255" required="true" />
+        <!-- règles -->
+        <validator colum="email">
+            <rule name="notMatch" value="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" message="Saisir une adresse email valide" />
+        </validator>
+    
+    </table>  
+</database>
