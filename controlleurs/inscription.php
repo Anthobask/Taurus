@@ -1,8 +1,5 @@
 <?php
 
-// Initialisation de l'environnement
-require('./librairie/configs/config_init.php');
-
 $smarty->assign('displayForm', '1');
 $message = '';
 $erreurFields = 0;

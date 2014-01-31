@@ -1,15 +1,10 @@
 <?php
 
-/**
- * Description of controlleur
- *
- * @author Anthony Poulain
- */
 class Controlleur {
 
     static protected $wSingleton = null;
-    public $user_current = null; //objet Users de l'utilisateur enregistré
-    public $messagesListe = array();
+    protected $user_current = null; //objet Users de l'utilisateur enregistré
+    protected $messagesListe = array();
 
     static public function getInstance() {
         if (!isset(self::$wSingleton)) {
@@ -23,32 +18,26 @@ class Controlleur {
         if (!isset($_SESSION['initiated'])) {
             session_regenerate_id();
             $_SESSION['initiated'] = true;
+            // session_unregister('messageList');
         }
     }
 
-    //Permet d'authentifier un utilisateur dans tout le site :
-    public function authentifierUser($unUser) {
-        $this->user_current = $unUser;
-        // Construire le cookie 
-        setCookie('idUser', $unUser->getId(), time() + 60 * 60 * 24 * 30); // expire dans un 30 jours
-        // Construire la session 
-        if (!isset($_SESSION['idUser'])) {
-            $_SESSION['idUser'] = $unUser->getId();
-        }
-    }
-
+    // A Faire : Faire la connexion automatique en vérifiant le cookie, OU la session  
     public function getUserCurrent() {
         return $this->user_current;
     }
 
+    public function setUserCurrent($unUser) {
+        $this->user_current = $unUser;
+    }
+
     public function setShowMessage($env, $message) {
+        var_dump($_SESSION['messageList']);
         if (isset($_SESSION['messageList'])) {
             $this->messagesListe = $_SESSION['messageList'];
         }
         $this->messagesListe[$env] = $message;
-        // Puis on sauvegarde ce tableau dans les sessions :
-        $_SESSION['messageList'] = $this->messagesListe[$env];
-        //var_dump($_SESSION['messageList']);
+        $_SESSION['messageList'] = $this->messagesListe;
     }
 
     public function getShowMessage($env) {
@@ -59,15 +48,20 @@ class Controlleur {
     }
 
     public function initSmarty($smarty) {
-        if (isset($_SESSION['messageList'])) {
+        if (!empty($_SESSION['messageList'])) {
             $this->messagesListe = $_SESSION['messageList'];
-          //  var_dump($_SESSION['messageList']);
-            foreach ($_SESSION['messageList'] as $key => $value) {
-                //$smarty->assign($key, $data);
+            foreach ($this->messagesListe as $key => $value) {
+                $smarty->assign($key, $value);
             }
         }
     }
-
+    public function getPage($unePage) {
+        // on vérifie que la page existe :
+        if (file_exists(PATH . 'controlleurs/' . $unePage . ".php")) {
+            return PATH . 'controlleurs/' . $unePage . ".php";
+        } else {
+            return PATH;
+        }
+    }
 }
-
 ?>

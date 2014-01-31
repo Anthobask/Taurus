@@ -20,7 +20,7 @@ body {
  - Zone d'identification dans un cadre, collé à droite.
 */
 #header {
-    height : 200px;     
+    min-height : 200px;     
     background-color :#f0ead8;
     border-bottom : 1px solid black;
 }
@@ -44,7 +44,7 @@ body {
 #header .zone_id legend {    
     color : #f0ead8;
 }
-#header .zone_id a { 
+#header .zone_id a .bt { 
     background-color : #b94a48;
     margin-left : 5px;
     color : #f0ead8;   
@@ -52,7 +52,7 @@ body {
     padding : 5px;
 }
 
-#header .zone_id a:hover {    
+#header .zone_id a:hover .bt{    
     margin-left : 5px;
     color : white;
     border : 1px solid white;
@@ -143,4 +143,14 @@ body {
     margin-right: auto;
     padding-left: 50px;
     padding-right: -50px;
+}
+
+
+
+
+
+
+/************* DIVERS ************/
+.smallFont {
+    font-size:11px;
 }

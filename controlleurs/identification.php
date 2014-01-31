@@ -1,14 +1,10 @@
 <?php
 
-// Initialisation de l'environnement
-require('./librairie/configs/config_init.php');
-
-
 //recupère l'URL d'avant
-if(isset($_SERVER['HTTP_REFERER']))
+if (isset($_SERVER['HTTP_REFERER']))
     $url_origine = $_SERVER['HTTP_REFERER'];
 else
-    $url_origine = null;
+    $url_origine = PATH;
 //gestion de l'identification
 if (isset($_POST['validerIdentification'])) {
 
@@ -24,19 +20,23 @@ if (isset($_POST['validerIdentification'])) {
             break; // car on veut le premier 
             //todo : trouver une solution plus propre
         }
-        
-        if(empty($userCurrent))
-        {
+
+        if (empty($userCurrent)) {
             Controlleur::getInstance()->setShowMessage('cadreId', 'Les identifiants sont érronés.');
-        }
-        else
-        {
-            Controlleur::getInstance()->authentifierUser($userCurrent);     
+        } else {
+            Controlleur::getInstance()->setShowMessage('cadreId', '');
+            // Construction du cookie 
+            setCookie('idUser', $userCurrent->getId(), time() + 60 * 60 * 24 * 30); // expire dans un 30 jours
+            // Construire la session 
+            if (!isset($_SESSION['idUser'])) {
+                $_SESSION['idUser'] = $userCurrent->getId();
+            }
+            Controlleur::getInstance()->setUserCurrent($userCurrent);
+            Controlleur::getInstance()->setShowMessage('userConnected', 'true');
         }
     } else {
-        Controlleur::getInstance()->showMessage('cadreId', 'Merci de remplir tous les champs');
+        Controlleur::getInstance()->setShowMessage('cadreId', 'Merci de remplir tous les champs');
     }
 }
-//header('Location:'.$url_origine);
-$smarty->display('identification.tpl');
+header('Location:' . $url_origine);
 ?>

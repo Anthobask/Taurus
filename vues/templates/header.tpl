@@ -5,6 +5,11 @@
     </div>
     <div class="zone_id span7 ">
         <!-- Zone d'identification -->
-        {include file="cadreId.tpl"}
+        {if isset($userConnected) && $userConnected=='true'}
+            {include file="cadreIdOk.tpl"}
+        {else}
+            {include file="cadreId.tpl"}
+        {/if}
+        
     </div>
 </div>

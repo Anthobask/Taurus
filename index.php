@@ -2,10 +2,14 @@
 // Initialisation de l'environnement
 require('./librairie/configs/config_init.php');
 
-// permet d'afficher les variable corrects par rapport aux controlleurs
-
-
-
-
-$smarty->display('index.tpl');
+if(isset($_GET['p']))
+{
+    // todo : controle de sécurité
+    require Controlleur::getInstance()->getPage($_GET['p']);
+        
+}
+else
+{
+    $smarty->display('index.tpl');
+}
 ?>
