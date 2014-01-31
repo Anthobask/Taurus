@@ -4,6 +4,22 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ---------------------------------------------------------------------
+-- produits
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `produits`;
+
+CREATE TABLE `produits`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `nom` VARCHAR(255),
+    `prix` FLOAT,
+    `description` TEXT,
+    `documenation` TEXT,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- users
 -- ---------------------------------------------------------------------
 

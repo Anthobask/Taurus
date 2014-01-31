@@ -20,6 +20,20 @@ class Controlleur {
             $_SESSION['initiated'] = true;
             // session_unregister('messageList');
         }
+        
+        //Si la session n'existe pas, mais que le cookei existe, on créer la session.
+        if(empty($_SESSION['idUser']) && !empty($_COOKIE['idUser']))
+        {
+            // ENORME FAILLE - todo : à corriger.
+            //recuperation de l'user
+            $userCheck = new UsersPeer();
+            $userCurrent = $userCheck->retrieveByPK($_COOKIE['idUser']); 
+            $this->authentifierUser($userCurrent);
+            $this->setUserCurrent($userCurrent);
+            $this->setShowMessage('userConnected', 'true');
+            $this->setShowMessage('nomUser', $userCurrent->getNom());
+            $this->setShowMessage('prenomUser', $userCurrent->getPrenom());
+        }
     }
 
     // A Faire : Faire la connexion automatique en vérifiant le cookie, OU la session  
@@ -30,9 +44,19 @@ class Controlleur {
     public function setUserCurrent($unUser) {
         $this->user_current = $unUser;
     }
+    //Permet d'authentifier un utilisateur dans tout le site :
+    public function authentifierUser($unUser) {
+        $this->user_current = $unUser;
+        // Construire le cookie 
+        setCookie('idUser', $unUser->getId(), time() + 60 * 60 * 24 * 30); // expire dans un 30 jours
+        // Construire la session 
+        if (!isset($_SESSION['idUser'])) {
+            $_SESSION['idUser'] = $unUser->getId();
+        }
+    }
+    
 
     public function setShowMessage($env, $message) {
-        var_dump($_SESSION['messageList']);
         if (isset($_SESSION['messageList'])) {
             $this->messagesListe = $_SESSION['messageList'];
         }

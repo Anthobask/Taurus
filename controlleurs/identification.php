@@ -33,6 +33,9 @@ if (isset($_POST['validerIdentification'])) {
             }
             Controlleur::getInstance()->setUserCurrent($userCurrent);
             Controlleur::getInstance()->setShowMessage('userConnected', 'true');
+            Controlleur::getInstance()->setShowMessage('nomUser', $userCurrent->getNom());
+            Controlleur::getInstance()->setShowMessage('prenomUser', $userCurrent->getPrenom());
+            
         }
     } else {
         Controlleur::getInstance()->setShowMessage('cadreId', 'Merci de remplir tous les champs');
