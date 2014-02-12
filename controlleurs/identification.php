@@ -9,7 +9,7 @@ else
 if (isset($_POST['validerIdentification'])) {
 
     if (isset($_POST['login']) && isset($_POST['password'])) {
-        $con = Propel::getConnection(UsersPeer::DATABASE_NAME);
+        //$con = Propel::getConnection(UsersPeer::DATABASE_NAME);
 
         $userCurrent = null;
         $userCheck = UsersQuery::create()->findByLogin($_POST['login']);

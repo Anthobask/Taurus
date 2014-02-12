@@ -4,6 +4,19 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ---------------------------------------------------------------------
+-- categorie
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `categorie`;
+
+CREATE TABLE `categorie`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `libelle` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- produits
 -- ---------------------------------------------------------------------
 
@@ -16,6 +29,8 @@ CREATE TABLE `produits`
     `prix` FLOAT,
     `description` TEXT,
     `documenation` TEXT,
+    `img` VARCHAR(255) NOT NULL,
+    `idCateg` INTEGER NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 

@@ -11,12 +11,16 @@
  * @method ProduitsQuery orderByPrix($order = Criteria::ASC) Order by the prix column
  * @method ProduitsQuery orderByDescription($order = Criteria::ASC) Order by the description column
  * @method ProduitsQuery orderByDocumenation($order = Criteria::ASC) Order by the documenation column
+ * @method ProduitsQuery orderByImg($order = Criteria::ASC) Order by the img column
+ * @method ProduitsQuery orderByIdcateg($order = Criteria::ASC) Order by the idCateg column
  *
  * @method ProduitsQuery groupById() Group by the id column
  * @method ProduitsQuery groupByNom() Group by the nom column
  * @method ProduitsQuery groupByPrix() Group by the prix column
  * @method ProduitsQuery groupByDescription() Group by the description column
  * @method ProduitsQuery groupByDocumenation() Group by the documenation column
+ * @method ProduitsQuery groupByImg() Group by the img column
+ * @method ProduitsQuery groupByIdcateg() Group by the idCateg column
  *
  * @method ProduitsQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method ProduitsQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -29,12 +33,16 @@
  * @method Produits findOneByPrix(double $prix) Return the first Produits filtered by the prix column
  * @method Produits findOneByDescription(string $description) Return the first Produits filtered by the description column
  * @method Produits findOneByDocumenation(string $documenation) Return the first Produits filtered by the documenation column
+ * @method Produits findOneByImg(string $img) Return the first Produits filtered by the img column
+ * @method Produits findOneByIdcateg(int $idCateg) Return the first Produits filtered by the idCateg column
  *
  * @method array findById(int $id) Return Produits objects filtered by the id column
  * @method array findByNom(string $nom) Return Produits objects filtered by the nom column
  * @method array findByPrix(double $prix) Return Produits objects filtered by the prix column
  * @method array findByDescription(string $description) Return Produits objects filtered by the description column
  * @method array findByDocumenation(string $documenation) Return Produits objects filtered by the documenation column
+ * @method array findByImg(string $img) Return Produits objects filtered by the img column
+ * @method array findByIdcateg(int $idCateg) Return Produits objects filtered by the idCateg column
  *
  * @package    propel.generator.taurus.om
  */
@@ -142,7 +150,7 @@ abstract class BaseProduitsQuery extends ModelCriteria
      */
     protected function findPkSimple($key, $con)
     {
-        $sql = 'SELECT `id`, `nom`, `prix`, `description`, `documenation` FROM `produits` WHERE `id` = :p0';
+        $sql = 'SELECT `id`, `nom`, `prix`, `description`, `documenation`, `img`, `idCateg` FROM `produits` WHERE `id` = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -400,6 +408,77 @@ abstract class BaseProduitsQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(ProduitsPeer::DOCUMENATION, $documenation, $comparison);
+    }
+
+    /**
+     * Filter the query on the img column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByImg('fooValue');   // WHERE img = 'fooValue'
+     * $query->filterByImg('%fooValue%'); // WHERE img LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $img The value to use as filter.
+     *              Accepts wildcards (* and % trigger a LIKE)
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ProduitsQuery The current query, for fluid interface
+     */
+    public function filterByImg($img = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($img)) {
+                $comparison = Criteria::IN;
+            } elseif (preg_match('/[\%\*]/', $img)) {
+                $img = str_replace('*', '%', $img);
+                $comparison = Criteria::LIKE;
+            }
+        }
+
+        return $this->addUsingAlias(ProduitsPeer::IMG, $img, $comparison);
+    }
+
+    /**
+     * Filter the query on the idCateg column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByIdcateg(1234); // WHERE idCateg = 1234
+     * $query->filterByIdcateg(array(12, 34)); // WHERE idCateg IN (12, 34)
+     * $query->filterByIdcateg(array('min' => 12)); // WHERE idCateg >= 12
+     * $query->filterByIdcateg(array('max' => 12)); // WHERE idCateg <= 12
+     * </code>
+     *
+     * @param     mixed $idcateg The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ProduitsQuery The current query, for fluid interface
+     */
+    public function filterByIdcateg($idcateg = null, $comparison = null)
+    {
+        if (is_array($idcateg)) {
+            $useMinMax = false;
+            if (isset($idcateg['min'])) {
+                $this->addUsingAlias(ProduitsPeer::IDCATEG, $idcateg['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($idcateg['max'])) {
+                $this->addUsingAlias(ProduitsPeer::IDCATEG, $idcateg['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(ProduitsPeer::IDCATEG, $idcateg, $comparison);
     }
 
     /**

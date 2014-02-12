@@ -2,24 +2,24 @@
 
 
 /**
- * Base class that represents a row from the 'produits' table.
+ * Base class that represents a row from the 'categorie' table.
  *
  *
  *
  * @package    propel.generator.taurus.om
  */
-abstract class BaseProduits extends BaseObject implements Persistent
+abstract class BaseCategorie extends BaseObject implements Persistent
 {
     /**
      * Peer class name
      */
-    const PEER = 'ProduitsPeer';
+    const PEER = 'CategoriePeer';
 
     /**
      * The Peer class.
      * Instance provides a convenient way of calling static methods on a class
      * that calling code may not be able to identify.
-     * @var        ProduitsPeer
+     * @var        CategoriePeer
      */
     protected static $peer;
 
@@ -36,40 +36,10 @@ abstract class BaseProduits extends BaseObject implements Persistent
     protected $id;
 
     /**
-     * The value for the nom field.
+     * The value for the libelle field.
      * @var        string
      */
-    protected $nom;
-
-    /**
-     * The value for the prix field.
-     * @var        double
-     */
-    protected $prix;
-
-    /**
-     * The value for the description field.
-     * @var        string
-     */
-    protected $description;
-
-    /**
-     * The value for the documenation field.
-     * @var        string
-     */
-    protected $documenation;
-
-    /**
-     * The value for the img field.
-     * @var        string
-     */
-    protected $img;
-
-    /**
-     * The value for the idcateg field.
-     * @var        int
-     */
-    protected $idcateg;
+    protected $libelle;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -103,76 +73,21 @@ abstract class BaseProduits extends BaseObject implements Persistent
     }
 
     /**
-     * Get the [nom] column value.
+     * Get the [libelle] column value.
      *
      * @return string
      */
-    public function getNom()
+    public function getLibelle()
     {
 
-        return $this->nom;
-    }
-
-    /**
-     * Get the [prix] column value.
-     *
-     * @return double
-     */
-    public function getPrix()
-    {
-
-        return $this->prix;
-    }
-
-    /**
-     * Get the [description] column value.
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-
-        return $this->description;
-    }
-
-    /**
-     * Get the [documenation] column value.
-     *
-     * @return string
-     */
-    public function getDocumenation()
-    {
-
-        return $this->documenation;
-    }
-
-    /**
-     * Get the [img] column value.
-     *
-     * @return string
-     */
-    public function getImg()
-    {
-
-        return $this->img;
-    }
-
-    /**
-     * Get the [idcateg] column value.
-     *
-     * @return int
-     */
-    public function getIdcateg()
-    {
-
-        return $this->idcateg;
+        return $this->libelle;
     }
 
     /**
      * Set the value of [id] column.
      *
      * @param  int $v new value
-     * @return Produits The current object (for fluent API support)
+     * @return Categorie The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -182,7 +97,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[] = ProduitsPeer::ID;
+            $this->modifiedColumns[] = CategoriePeer::ID;
         }
 
 
@@ -190,130 +105,25 @@ abstract class BaseProduits extends BaseObject implements Persistent
     } // setId()
 
     /**
-     * Set the value of [nom] column.
+     * Set the value of [libelle] column.
      *
      * @param  string $v new value
-     * @return Produits The current object (for fluent API support)
+     * @return Categorie The current object (for fluent API support)
      */
-    public function setNom($v)
+    public function setLibelle($v)
     {
         if ($v !== null && is_numeric($v)) {
             $v = (string) $v;
         }
 
-        if ($this->nom !== $v) {
-            $this->nom = $v;
-            $this->modifiedColumns[] = ProduitsPeer::NOM;
+        if ($this->libelle !== $v) {
+            $this->libelle = $v;
+            $this->modifiedColumns[] = CategoriePeer::LIBELLE;
         }
 
 
         return $this;
-    } // setNom()
-
-    /**
-     * Set the value of [prix] column.
-     *
-     * @param  double $v new value
-     * @return Produits The current object (for fluent API support)
-     */
-    public function setPrix($v)
-    {
-        if ($v !== null && is_numeric($v)) {
-            $v = (double) $v;
-        }
-
-        if ($this->prix !== $v) {
-            $this->prix = $v;
-            $this->modifiedColumns[] = ProduitsPeer::PRIX;
-        }
-
-
-        return $this;
-    } // setPrix()
-
-    /**
-     * Set the value of [description] column.
-     *
-     * @param  string $v new value
-     * @return Produits The current object (for fluent API support)
-     */
-    public function setDescription($v)
-    {
-        if ($v !== null && is_numeric($v)) {
-            $v = (string) $v;
-        }
-
-        if ($this->description !== $v) {
-            $this->description = $v;
-            $this->modifiedColumns[] = ProduitsPeer::DESCRIPTION;
-        }
-
-
-        return $this;
-    } // setDescription()
-
-    /**
-     * Set the value of [documenation] column.
-     *
-     * @param  string $v new value
-     * @return Produits The current object (for fluent API support)
-     */
-    public function setDocumenation($v)
-    {
-        if ($v !== null && is_numeric($v)) {
-            $v = (string) $v;
-        }
-
-        if ($this->documenation !== $v) {
-            $this->documenation = $v;
-            $this->modifiedColumns[] = ProduitsPeer::DOCUMENATION;
-        }
-
-
-        return $this;
-    } // setDocumenation()
-
-    /**
-     * Set the value of [img] column.
-     *
-     * @param  string $v new value
-     * @return Produits The current object (for fluent API support)
-     */
-    public function setImg($v)
-    {
-        if ($v !== null && is_numeric($v)) {
-            $v = (string) $v;
-        }
-
-        if ($this->img !== $v) {
-            $this->img = $v;
-            $this->modifiedColumns[] = ProduitsPeer::IMG;
-        }
-
-
-        return $this;
-    } // setImg()
-
-    /**
-     * Set the value of [idcateg] column.
-     *
-     * @param  int $v new value
-     * @return Produits The current object (for fluent API support)
-     */
-    public function setIdcateg($v)
-    {
-        if ($v !== null && is_numeric($v)) {
-            $v = (int) $v;
-        }
-
-        if ($this->idcateg !== $v) {
-            $this->idcateg = $v;
-            $this->modifiedColumns[] = ProduitsPeer::IDCATEG;
-        }
-
-
-        return $this;
-    } // setIdcateg()
+    } // setLibelle()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -348,12 +158,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
         try {
 
             $this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
-            $this->nom = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
-            $this->prix = ($row[$startcol + 2] !== null) ? (double) $row[$startcol + 2] : null;
-            $this->description = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-            $this->documenation = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-            $this->img = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-            $this->idcateg = ($row[$startcol + 6] !== null) ? (int) $row[$startcol + 6] : null;
+            $this->libelle = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -363,10 +168,10 @@ abstract class BaseProduits extends BaseObject implements Persistent
             }
             $this->postHydrate($row, $startcol, $rehydrate);
 
-            return $startcol + 7; // 7 = ProduitsPeer::NUM_HYDRATE_COLUMNS.
+            return $startcol + 2; // 2 = CategoriePeer::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating Produits object", $e);
+            throw new PropelException("Error populating Categorie object", $e);
         }
     }
 
@@ -409,13 +214,13 @@ abstract class BaseProduits extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(ProduitsPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(CategoriePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $stmt = ProduitsPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+        $stmt = CategoriePeer::doSelectStmt($this->buildPkeyCriteria(), $con);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         $stmt->closeCursor();
         if (!$row) {
@@ -445,12 +250,12 @@ abstract class BaseProduits extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(ProduitsPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(CategoriePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = ProduitsQuery::create()
+            $deleteQuery = CategorieQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -488,7 +293,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(ProduitsPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(CategoriePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
@@ -508,7 +313,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                ProduitsPeer::addInstanceToPool($this);
+                CategoriePeer::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -569,36 +374,21 @@ abstract class BaseProduits extends BaseObject implements Persistent
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[] = ProduitsPeer::ID;
+        $this->modifiedColumns[] = CategoriePeer::ID;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . ProduitsPeer::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . CategoriePeer::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(ProduitsPeer::ID)) {
+        if ($this->isColumnModified(CategoriePeer::ID)) {
             $modifiedColumns[':p' . $index++]  = '`id`';
         }
-        if ($this->isColumnModified(ProduitsPeer::NOM)) {
-            $modifiedColumns[':p' . $index++]  = '`nom`';
-        }
-        if ($this->isColumnModified(ProduitsPeer::PRIX)) {
-            $modifiedColumns[':p' . $index++]  = '`prix`';
-        }
-        if ($this->isColumnModified(ProduitsPeer::DESCRIPTION)) {
-            $modifiedColumns[':p' . $index++]  = '`description`';
-        }
-        if ($this->isColumnModified(ProduitsPeer::DOCUMENATION)) {
-            $modifiedColumns[':p' . $index++]  = '`documenation`';
-        }
-        if ($this->isColumnModified(ProduitsPeer::IMG)) {
-            $modifiedColumns[':p' . $index++]  = '`img`';
-        }
-        if ($this->isColumnModified(ProduitsPeer::IDCATEG)) {
-            $modifiedColumns[':p' . $index++]  = '`idCateg`';
+        if ($this->isColumnModified(CategoriePeer::LIBELLE)) {
+            $modifiedColumns[':p' . $index++]  = '`libelle`';
         }
 
         $sql = sprintf(
-            'INSERT INTO `produits` (%s) VALUES (%s)',
+            'INSERT INTO `categorie` (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -610,23 +400,8 @@ abstract class BaseProduits extends BaseObject implements Persistent
                     case '`id`':
                         $stmt->bindValue($identifier, $this->id, PDO::PARAM_INT);
                         break;
-                    case '`nom`':
-                        $stmt->bindValue($identifier, $this->nom, PDO::PARAM_STR);
-                        break;
-                    case '`prix`':
-                        $stmt->bindValue($identifier, $this->prix, PDO::PARAM_STR);
-                        break;
-                    case '`description`':
-                        $stmt->bindValue($identifier, $this->description, PDO::PARAM_STR);
-                        break;
-                    case '`documenation`':
-                        $stmt->bindValue($identifier, $this->documenation, PDO::PARAM_STR);
-                        break;
-                    case '`img`':
-                        $stmt->bindValue($identifier, $this->img, PDO::PARAM_STR);
-                        break;
-                    case '`idCateg`':
-                        $stmt->bindValue($identifier, $this->idcateg, PDO::PARAM_INT);
+                    case '`libelle`':
+                        $stmt->bindValue($identifier, $this->libelle, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -722,7 +497,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
             $failureMap = array();
 
 
-            if (($retval = ProduitsPeer::doValidate($this, $columns)) !== true) {
+            if (($retval = CategoriePeer::doValidate($this, $columns)) !== true) {
                 $failureMap = array_merge($failureMap, $retval);
             }
 
@@ -746,7 +521,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = ProduitsPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = CategoriePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -766,22 +541,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
                 return $this->getId();
                 break;
             case 1:
-                return $this->getNom();
-                break;
-            case 2:
-                return $this->getPrix();
-                break;
-            case 3:
-                return $this->getDescription();
-                break;
-            case 4:
-                return $this->getDocumenation();
-                break;
-            case 5:
-                return $this->getImg();
-                break;
-            case 6:
-                return $this->getIdcateg();
+                return $this->getLibelle();
                 break;
             default:
                 return null;
@@ -805,19 +565,14 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
-        if (isset($alreadyDumpedObjects['Produits'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['Categorie'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['Produits'][$this->getPrimaryKey()] = true;
-        $keys = ProduitsPeer::getFieldNames($keyType);
+        $alreadyDumpedObjects['Categorie'][$this->getPrimaryKey()] = true;
+        $keys = CategoriePeer::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
-            $keys[1] => $this->getNom(),
-            $keys[2] => $this->getPrix(),
-            $keys[3] => $this->getDescription(),
-            $keys[4] => $this->getDocumenation(),
-            $keys[5] => $this->getImg(),
-            $keys[6] => $this->getIdcateg(),
+            $keys[1] => $this->getLibelle(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -841,7 +596,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = ProduitsPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = CategoriePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 
         $this->setByPosition($pos, $value);
     }
@@ -861,22 +616,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
                 $this->setId($value);
                 break;
             case 1:
-                $this->setNom($value);
-                break;
-            case 2:
-                $this->setPrix($value);
-                break;
-            case 3:
-                $this->setDescription($value);
-                break;
-            case 4:
-                $this->setDocumenation($value);
-                break;
-            case 5:
-                $this->setImg($value);
-                break;
-            case 6:
-                $this->setIdcateg($value);
+                $this->setLibelle($value);
                 break;
         } // switch()
     }
@@ -900,15 +640,10 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
     {
-        $keys = ProduitsPeer::getFieldNames($keyType);
+        $keys = CategoriePeer::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-        if (array_key_exists($keys[1], $arr)) $this->setNom($arr[$keys[1]]);
-        if (array_key_exists($keys[2], $arr)) $this->setPrix($arr[$keys[2]]);
-        if (array_key_exists($keys[3], $arr)) $this->setDescription($arr[$keys[3]]);
-        if (array_key_exists($keys[4], $arr)) $this->setDocumenation($arr[$keys[4]]);
-        if (array_key_exists($keys[5], $arr)) $this->setImg($arr[$keys[5]]);
-        if (array_key_exists($keys[6], $arr)) $this->setIdcateg($arr[$keys[6]]);
+        if (array_key_exists($keys[1], $arr)) $this->setLibelle($arr[$keys[1]]);
     }
 
     /**
@@ -918,15 +653,10 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(ProduitsPeer::DATABASE_NAME);
+        $criteria = new Criteria(CategoriePeer::DATABASE_NAME);
 
-        if ($this->isColumnModified(ProduitsPeer::ID)) $criteria->add(ProduitsPeer::ID, $this->id);
-        if ($this->isColumnModified(ProduitsPeer::NOM)) $criteria->add(ProduitsPeer::NOM, $this->nom);
-        if ($this->isColumnModified(ProduitsPeer::PRIX)) $criteria->add(ProduitsPeer::PRIX, $this->prix);
-        if ($this->isColumnModified(ProduitsPeer::DESCRIPTION)) $criteria->add(ProduitsPeer::DESCRIPTION, $this->description);
-        if ($this->isColumnModified(ProduitsPeer::DOCUMENATION)) $criteria->add(ProduitsPeer::DOCUMENATION, $this->documenation);
-        if ($this->isColumnModified(ProduitsPeer::IMG)) $criteria->add(ProduitsPeer::IMG, $this->img);
-        if ($this->isColumnModified(ProduitsPeer::IDCATEG)) $criteria->add(ProduitsPeer::IDCATEG, $this->idcateg);
+        if ($this->isColumnModified(CategoriePeer::ID)) $criteria->add(CategoriePeer::ID, $this->id);
+        if ($this->isColumnModified(CategoriePeer::LIBELLE)) $criteria->add(CategoriePeer::LIBELLE, $this->libelle);
 
         return $criteria;
     }
@@ -941,8 +671,8 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(ProduitsPeer::DATABASE_NAME);
-        $criteria->add(ProduitsPeer::ID, $this->id);
+        $criteria = new Criteria(CategoriePeer::DATABASE_NAME);
+        $criteria->add(CategoriePeer::ID, $this->id);
 
         return $criteria;
     }
@@ -983,19 +713,14 @@ abstract class BaseProduits extends BaseObject implements Persistent
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param object $copyObj An object of Produits (or compatible) type.
+     * @param object $copyObj An object of Categorie (or compatible) type.
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
      */
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
-        $copyObj->setNom($this->getNom());
-        $copyObj->setPrix($this->getPrix());
-        $copyObj->setDescription($this->getDescription());
-        $copyObj->setDocumenation($this->getDocumenation());
-        $copyObj->setImg($this->getImg());
-        $copyObj->setIdcateg($this->getIdcateg());
+        $copyObj->setLibelle($this->getLibelle());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1011,7 +736,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
      * objects.
      *
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return Produits Clone of current object.
+     * @return Categorie Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1031,12 +756,12 @@ abstract class BaseProduits extends BaseObject implements Persistent
      * same instance for all member of this class. The method could therefore
      * be static, but this would prevent one from overriding the behavior.
      *
-     * @return ProduitsPeer
+     * @return CategoriePeer
      */
     public function getPeer()
     {
         if (self::$peer === null) {
-            self::$peer = new ProduitsPeer();
+            self::$peer = new CategoriePeer();
         }
 
         return self::$peer;
@@ -1048,12 +773,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
     public function clear()
     {
         $this->id = null;
-        $this->nom = null;
-        $this->prix = null;
-        $this->description = null;
-        $this->documenation = null;
-        $this->img = null;
-        $this->idcateg = null;
+        $this->libelle = null;
         $this->alreadyInSave = false;
         $this->alreadyInValidation = false;
         $this->alreadyInClearAllReferencesDeep = false;
@@ -1089,7 +809,7 @@ abstract class BaseProduits extends BaseObject implements Persistent
      */
     public function __toString()
     {
-        return (string) $this->exportTo(ProduitsPeer::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(CategoriePeer::DEFAULT_STRING_FORMAT);
     }
 
     /**

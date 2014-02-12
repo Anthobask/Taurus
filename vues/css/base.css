@@ -95,11 +95,12 @@ body {
     background-color : #ddd;
     padding : 10px;   
     margin-right : 10px;   
+    margin-bottom : 40px;
 
 }
 
 #footer { 
-    margin-top : 0px; 
+    margin-top :0px; 
     position : fixed;
     width : 90%; /* 100%-2*[margin du body] */
     height : 30px;
@@ -116,7 +117,7 @@ body {
 
 
 /***** index.php *****/
-.cadre_promo {
+.cadre_promo, .cadre {
     background-color :#faf2cc;
     padding : 5px;
     text-align : center;
