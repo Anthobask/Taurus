@@ -17,8 +17,8 @@ function validateEmail(email) {
 function compareFields(champs1, champs2)
 {
     var contenu1 = $('#' + champs1).val();
-    var contenu2 = $('#' + champs2).val();    
-    if(contenu1 == contenu2)
+    var contenu2 = $('#' + champs2).val();
+    if (contenu1 == contenu2)
     {
         $('#' + champs2).css("background-color", "white");
     }
@@ -26,6 +26,33 @@ function compareFields(champs1, champs2)
     {
         $('#' + champs2).css("background-color", "red");
     }
-    
-    
+}
+
+//ajout en ajax du produit dans le panier, de l'utilisateur a la session courrante.
+function addPanier(idProduit)
+{
+    var quantiteProduit = $('#qteProd option:selected').text();
+    jQuery.ajax({
+        type: 'POST', // Le type de ma requete
+        url: 'controlleurs/ajax/addPanier.php', // L'url vers laquelle la requete sera envoyee
+        data: {
+            idProduit: idProduit,
+            quantite: quantiteProduit
+        },
+        success: function(data, textStatus, jqXHR) {
+            var tabData = data.split(';');
+            if (tabData[0] == 'error')
+            {
+                alert(tabData[1])
+            } else {
+                $('#price_cadreId').text(tabData[1]);
+                $('#nbArticle_cadreId').text(tabData[0]);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('Erreur : '.errorThrown);
+        }
+    });
+
+
 }

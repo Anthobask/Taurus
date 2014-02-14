@@ -6,12 +6,9 @@
             <file>file:/C:/wamp/www/Taurus/vues/templates/cadreIdOK.tpl</file>
             <file>file:/C:/wamp/www/Taurus/index.php</file>
             <file>file:/C:/wamp/www/Taurus/controlleurs/Controlleur.php</file>
-            <file>file:/C:/wamp/www/Taurus/controlleurs/contact.php</file>
-            <file>file:/C:/wamp/www/Taurus/vues/templates/menu.tpl</file>
-            <file>file:/C:/wamp/www/Taurus/vues/templates/cadreId.tpl</file>
-            <file>file:/C:/wamp/www/Taurus/controlleurs/deconnexion.php</file>
-            <file>file:/C:/wamp/www/Taurus/controlleurs/inscription.php</file>
-            <file>file:/C:/wamp/www/Taurus/vues/css/base.css</file>
+            <file>file:/C:/wamp/www/Taurus/controlleurs/client-panier.php</file>
+            <file>file:/C:/wamp/www/Taurus/librairie/configs/defines.inc.php</file>
+            <file>file:/C:/wamp/www/Taurus/vues/templates/client-profil.tpl</file>
         </group>
     </open-files>
 </project-private>

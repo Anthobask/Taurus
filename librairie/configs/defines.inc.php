@@ -4,7 +4,7 @@ if (!isset($_SERVER['DOCUMENT_ROOT']))
     die();
 
 // Define de la racine du site
-define('NAME_SITE', '/Taurus/');
+define('NAME_SITE', 'Taurus/');
 define('PATH', $_SERVER['DOCUMENT_ROOT'].NAME_SITE);
 
 // Define du dossier de Smarty

@@ -23,7 +23,7 @@
                     <td class="">{$unProduit.prix}</td>
                     <td class="">
                         <label>Quantité</label>
-                        <select name="qte" >
+                        <select id="qteProd" >
                             <!-- todo : a faire avec smarty -->
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -36,7 +36,11 @@
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
-                        <input type="button" id="addPanier" value="Ajouter au panier" />
+                        {if isset($userConnected) && $userConnected=='true'}
+                            <input type="button" id="addPanier" value="Ajouter au panier" onClick="addPanier({$unProduit.id})"/>
+                        {else} 
+                            <input type="button" value="Ajouter au panier" disabled/>
+                        {/if}
                     </td>
                 </tr>
             {/foreach}

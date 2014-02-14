@@ -17,6 +17,20 @@ CREATE TABLE `categorie`
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
+-- paniers
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `paniers`;
+
+CREATE TABLE `paniers`
+(
+    `idUSer` INTEGER NOT NULL,
+    `idProduit` INTEGER NOT NULL,
+    `quantite` INTEGER NOT NULL,
+    PRIMARY KEY (`idUSer`,`idProduit`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- produits
 -- ---------------------------------------------------------------------
 
