@@ -1,9 +1,4 @@
 <?php
-if(isset($_POST['buy']))
-{
-    var_dump('ICI ca s\'AFFICHE quand tu clic sur ACHETER');
-}
-
 
 // Affichage du panier 
 $produits = array();
@@ -17,8 +12,7 @@ if (isset($_SESSION['idUser']) && $_SESSION['idUser'] > 0) {
 
         //modification des données, si le formulaire est validé
         //on cherche les variables POST qui commencent par "qte_"+idProduit
-        
-        if(isset($_POST['modif']) && isset($_POST['qte_'.$unProduit->getId()]) && $_POST['qte_'.$unProduit->getId()]>= 0)
+        if(isset($_POST['qte_'.$unProduit->getId()]) && $_POST['qte_'.$unProduit->getId()]>= 0)
         {
             // en modifiant le panier, on change les variables de smarty : sommePrixArticle & sommeNbArticle
             $differenceNb = $_POST['qte_'.$unProduit->getId()] - $unPanier->getQuantite();
