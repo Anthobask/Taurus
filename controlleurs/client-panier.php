@@ -1,4 +1,8 @@
 <?php
+if(isset($_POST['buy']))
+{
+    var_dump('ICI ca s\'AFFICHE quand tu clic sur ACHETER');
+}
 
 // Affichage du panier 
 $produits = array();
