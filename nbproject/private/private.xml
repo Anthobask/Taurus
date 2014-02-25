@@ -4,10 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp/www/Taurus/vues/templates/cadreIdOK.tpl</file>
-            <file>file:/C:/wamp/www/Taurus/index.php</file>
+            <file>file:/C:/wamp/www/Taurus/controlleurs/ajax/addPanier.php</file>
+            <file>file:/C:/wamp/www/Taurus/vues/templates/catalogue.tpl</file>
             <file>file:/C:/wamp/www/Taurus/controlleurs/Controlleur.php</file>
+            <file>file:/C:/wamp/www/Taurus/vues/js/main.js</file>
+            <file>file:/C:/wamp/www/Taurus/vues/templates/header.tpl</file>
             <file>file:/C:/wamp/www/Taurus/controlleurs/client-panier.php</file>
-            <file>file:/C:/wamp/www/Taurus/librairie/configs/defines.inc.php</file>
+            <file>file:/C:/wamp/www/Taurus/controlleurs/catalogue.php</file>
             <file>file:/C:/wamp/www/Taurus/vues/templates/client-profil.tpl</file>
         </group>
     </open-files>

@@ -7,15 +7,17 @@ if (isset($_SESSION['idUser']) && $_SESSION['idUser'] > 0) {
     if (isset($_POST['idProduit']) && $_POST['idProduit'] > 0 && isset($_POST['quantite']) && $_POST['quantite'] > 0) {
         $panierexiste = false;
         $lesPaniers = PaniersQuery::create()->findByIduser($_SESSION['idUser']);
-        $unPanier = new Paniers();
+        //Si le paniers existe déjà, on modifie la quantite du produit en question
         foreach ($lesPaniers as $unPanier) {
-            if ($unPanier->getIdproduit() == $_POST['idProduit']) {
+            if ($unPanier->getIdproduit() == $_POST['idProduit'])   
+            {              
                 $panierexiste = true;
-                $unPanier->setQuantite($unPanier->getQuantite());
+                $unPanier->setQuantite($unPanier->getQuantite() + $_POST['quantite']);
                 $unPanier->save();
                 break;
             }
         }
+        //sinon on le créer
         if (!$panierexiste) {
             $panier = new Paniers();
             $panier->setIduser($_SESSION['idUser']);
@@ -23,11 +25,9 @@ if (isset($_SESSION['idUser']) && $_SESSION['idUser'] > 0) {
             $panier->setQuantite($_POST['quantite']);
             $panier->save();
         }
-        //On recupère les données : Nombre de produit, total des prix.
+        //On recupère les données : Nombre de produit, total des prix
         $sommeNbArticle = 0;
         $sommePrixArticle = 0;
-        $lesPaniers = PaniersQuery::create()->findByIduser($_SESSION['idUser']);
-        $unPanier = new Paniers();
         foreach ($lesPaniers as $unPanier) {
             $idCategorie = $unPanier->getIdproduit();
             $sommeNbArticle += $unPanier->getQuantite();
@@ -42,4 +42,3 @@ if (isset($_SESSION['idUser']) && $_SESSION['idUser'] > 0) {
 } else {
     echo'error;L\'utilisateur n\'est pas connecté';
 }    
- 

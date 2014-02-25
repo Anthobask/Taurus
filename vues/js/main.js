@@ -43,7 +43,7 @@ function addPanier(idProduit)
             var tabData = data.split(';');
             if (tabData[0] == 'error')
             {
-                alert(tabData[1])
+                alert(tabData[1]);
             } else {
                 $('#price_cadreId').text(tabData[1]);
                 $('#nbArticle_cadreId').text(tabData[0]);
@@ -53,6 +53,10 @@ function addPanier(idProduit)
             alert('Erreur : '.errorThrown);
         }
     });
+}
 
-
+function modifPanier()
+{
+    $('.toDisplay').show();
+    $('.toHide').hide();
 }
