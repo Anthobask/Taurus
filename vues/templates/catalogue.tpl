@@ -18,7 +18,7 @@
                     <td class="">{$unProduit.prix}</td>
                     <td class="">
                         <label>Quantité</label>
-                        <select id="qteProd" >
+                        <select id="qteProd_{$unProduit.id}" >
                             <!-- todo : a faire avec smarty -->
                             <option value="1">1</option>
                             <option value="2">2</option>

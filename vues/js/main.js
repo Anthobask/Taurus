@@ -31,7 +31,7 @@ function compareFields(champs1, champs2)
 //ajout en ajax du produit dans le panier, de l'utilisateur a la session courrante.
 function addPanier(idProduit)
 {
-    var quantiteProduit = $('#qteProd option:selected').text();
+    var quantiteProduit = $('#qteProd_'+idProduit+' option:selected').text();
     jQuery.ajax({
         type: 'POST', // Le type de ma requete
         url: 'controlleurs/ajax/addPanier.php', // L'url vers laquelle la requete sera envoyee
