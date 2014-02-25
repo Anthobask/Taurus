@@ -34,7 +34,7 @@ if (isset($_POST['bt_inscription'])) {
     } else if ($_POST['mail1'] != $_POST['mail2']) {
         $message .= 'Les champs des <b>adresses e-mail</b> ne sont pas identiques.<br />';
         $erreurFields++;
-    } else if (!preg_match('/^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/', $_POST['mail1'])) {
+    } else if (!preg_match('/^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/', strtolower($_POST['mail1']))) {
         $message .= 'Le format de l\'<b>adresse email</b> est invalide.<br />';
         $erreurFields++;
     } else if (count($checkUser->findByEmail($_POST['mail1']))) {
